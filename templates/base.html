@@ -1,0 +1,18 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Share your linksk!">
+    <meta name="keywords" content="Developer, Links, Sharing">
+    <title>devlinks</title>
+    {% tailwind_css %}
+  </head>
+  <body>
+    <main>
+      {% block content %}
+      {% endblock content %}
+    </main>
+  </body>
+</html>
