@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.urls import include, path
+from api.api import api
 from allauth.account.views import LoginView, SignupView, LogoutView
 
 urlpatterns = [
@@ -9,6 +10,7 @@ urlpatterns = [
     path('login/', LoginView.as_view(success_url="/app"), name="account_login"),
     path('signup/', SignupView.as_view(success_url="/app"), name="account_signup"),
     path('logout/', LogoutView.as_view(redirect_field_name="marketing_page"), name="account_logout"),
+    path("api/", api.urls),
     path("", include("app.urls")),
     path("", include('marketing.urls')),
 ]
