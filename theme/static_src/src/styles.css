@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/*
+Font config
+*/
+@font-face {
+  font-family: "InstrumentSans";
+  font-weight: 400;
+  src: url("../../../static/fonts/InstrumentSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "KumbhSans";
+  font-weight: 700;
+  src: url("../../../static/fonts/InstrumentSans-Bold.ttf");
+}
+
+/*
+Custom classes
+*/
+@layer components {
+  .heading-m {
+    @apply text-[32px] leading-[150%];
+  }
+  .heading-s {
+    @apply text-base leading-[150%];
+  }
+  .body-m {
+    @apply text-base leading-[150%];
+  }
+  .body-s {
+    @apply text-xs leading-[150%];
+  }
+  .btn-primary {
+    @apply p-4 text-white bg-darkPurple rounded-lg hover:bg-purple hover:cursor-pointer disabled:opacity-50 disabled:hover:cursor-not-allowed disabled:hover:bg-darkPurple;
+  }
+  .btn-secondary {
+    @apply p-4 text-darkPurple bg-white rounded-lg border border-darkPurple hover:bg-lightPurple hover:cursor-pointer disabled:opacity-50 disabled:hover:cursor-not-allowed disabled:hover:bg-white;
+  }
+  .test-border {
+    @apply border-2 border-red;
+  }
+}
