@@ -18,6 +18,24 @@ Font config
 }
 
 /*
+Default element styles
+*/
+
+@layer base {
+  label {
+    @apply text-red;
+  }
+  input[type="text"],
+  input[type="email"],
+  textarea {
+    @apply border border-gray rounded caret-darkPurple focus:ring-0;
+  }
+  textarea {
+    @apply resize-none;
+  }
+}
+
+/*
 Custom classes
 */
 @layer components {
@@ -34,12 +52,54 @@ Custom classes
     @apply text-xs leading-[150%];
   }
   .btn-primary {
-    @apply p-4 text-white bg-darkPurple rounded-lg hover:bg-purple hover:cursor-pointer disabled:opacity-50 disabled:hover:cursor-not-allowed disabled:hover:bg-darkPurple;
+    @apply p-3 text-white bg-darkPurple rounded-lg hover:bg-purple hover:cursor-pointer disabled:opacity-50 disabled:hover:cursor-not-allowed disabled:hover:bg-darkPurple;
   }
   .btn-secondary {
-    @apply p-4 text-darkPurple bg-white rounded-lg border border-darkPurple hover:bg-lightPurple hover:cursor-pointer disabled:opacity-50 disabled:hover:cursor-not-allowed disabled:hover:bg-white;
+    @apply p-3 text-darkPurple bg-white rounded-lg border border-darkPurple hover:bg-lightPurple hover:cursor-pointer disabled:opacity-50 disabled:hover:cursor-not-allowed disabled:hover:bg-white;
   }
   .test-border {
     @apply border-2 border-red;
   }
+}
+
+/* Insert icons into form elements */
+.form-input {
+  position: relative;
+  > svg {
+    position: absolute;
+    top: 0.85rem;
+    left: 0.625rem;
+  }
+  > input {
+    padding-left: 2rem;
+  }
+}
+
+.form-select {
+  position: relative;
+  .select-option {
+    position: relative;
+  }
+  .select-icon {
+    position: absolute;
+    top: 2px;
+    left: 0rem;
+  }
+  .select-text {
+    padding-left: 1.5rem;
+  }
+}
+
+/* Blurred focus border on form elements */
+input[type="text"]:focus,
+input[type="text"]:hover,
+input[type="email"]:focus,
+input[type="email"]:hover {
+  box-shadow: rgba(190, 173, 255, 0.25) 0px 54px 55px,
+    rgba(190, 173, 255, 0.12) 0px -12px 30px,
+    rgba(190, 173, 255, 0.12) 0px 4px 6px,
+    rgba(190, 173, 255, 0.17) 0px 12px 13px,
+    rgba(190, 173, 255, 0.09) 0px -3px 5px;
+  border: 1px solid #633cff;
+  cursor: pointer;
 }

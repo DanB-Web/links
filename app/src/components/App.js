@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import FormSelect from "./forms/FormSelect.jsx";
+import FormTextInput from "./forms/FormTextInput.jsx";
+import FormEmailInput from "./forms/FormEmailInput.jsx";
+import { platformOptions } from "./data/platformOptions.js";
 
 const App = () => {
+  const [selectedOption, setSelectedOption] = useState(platformOptions[0]);
+
+  const selectHandler = (option) => {
+    console.log("option", option);
+    setSelectedOption(option);
+  };
+
   return (
     <div>
       <h2 className="heading-m">Large heading</h2>
@@ -17,6 +28,16 @@ const App = () => {
           Secondary button (disabled)
         </button>
       </div>
+      <div className="flex flex-col gap-4 pt-3">
+        <FormTextInput />
+        <FormEmailInput />
+        <FormSelect
+          value={selectedOption}
+          selectHandler={selectHandler}
+          options={platformOptions}
+        />
+      </div>
+      <h1>WAT</h1>
     </div>
   );
 };
