@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 
 const DashboardPage = () => {
   return (
-    <main>
-      Dashboard<Link to={"/app/preview"}>Preview</Link>
-    </main>
+    <>
+      <h1>Dashboard</h1>
+      <Link to={"/app/preview"}>Preview</Link>
+    </>
   );
 };
 

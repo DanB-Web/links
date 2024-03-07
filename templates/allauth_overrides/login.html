@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% load allauth account %}
+{% block content %}
+  <section class="col-start-2 col-span-12 flex flex-col justify-center">
+    <div class="flex justify-center mb-12">{% include "icons/logoDevlinksLarge.svg" %}</div>
+    <div class="mx-auto w-[476px] p-8 bg-white rounded-xl">
+      <h1 class="heading-m">Login</h1>
+      <p class="heading-s text-darkGray mb-6">Add your details here to get back into the app</p>
+      {% url 'account_login' as login_url %}
+      {% element form form=form method="post" action=login_url tags="entrance,login" %}
+      {% slot body %}
+      {% csrf_token %}
+      <div class="flex flex-col mb-6">
+        {{ form.login.errors | safe }}
+        <label for="email">Email address</label>
+        <input type="email"
+               name="login"
+               placeholder="e.g alex@email.com"
+               autocomplete="email"
+               maxlength="320"
+               required
+               id="id_login">
+      </div>
+      <div class="flex flex-col mb-6">
+        {{ form.password.errors | safe }}
+        <label for="id_password">Password</label>
+        <input type="password"
+               name="password"
+               placeholder="Enter your password"
+               required
+               id="id_password">
+      </div>
+      {% if redirect_field_value %}
+        <input type="hidden"
+               name="{{ redirect_field_name }}"
+               value="{{ redirect_field_value }}" />
+      {% endif %}
+    {% endslot %}
+    {% slot actions %}
+    <button class="btn-primary w-full" type="submit">Login</button>
+    <p class="mt-4 text-center">
+      Don't have an account?
+      <a class="text-darkPurple" href="{{ signup_url }}">Sign Up</a>
+    </p>
+  {% endslot %}
+{% endelement %}
+</div>
+</section>
+{% endblock content %}

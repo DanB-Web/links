@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% load allauth account %}
+{% block content %}
+  <section class="col-start-2 col-span-12 flex flex-col justify-center">
+    <div class="flex justify-center mb-12">{% include "icons/logoDevlinksLarge.svg" %}</div>
+    <div class="mx-auto w-[476px] p-8 bg-white rounded-xl">
+      <h1 class="heading-m mb-2">Sign Out</h1>
+      <p class="heading-s text-darkGray mb-6">Are you sure you want to sign out?</p>
+      {% url 'account_logout' as action_url %}
+      {% element form method="post" action=action_url no_visible_fields=True %}
+      {% slot body %}
+      {% csrf_token %}
+      {% if redirect_field_value %}
+        <input type="hidden"
+               name="{{ redirect_field_name }}"
+               value="{{ redirect_field_value }}" />
+      {% endif %}
+    {% endslot %}
+    {% slot actions %}
+    <button class="btn-primary w-full mb-4" type="submit">Sign Out</button>
+    <a class="text-darkPurple hover:text-purple" href="{% url 'link_app' %}">Back to dashboard</a>
+  {% endslot %}
+{% endelement %}
+</div>
+</section>
+{% endblock content %}

@@ -23,12 +23,13 @@ Default element styles
 
 @layer base {
   label {
-    @apply text-red;
+    @apply text-darkGray text-sm mb-2;
   }
   input[type="text"],
   input[type="email"],
+  input[type="password"],
   textarea {
-    @apply border border-gray rounded caret-darkPurple focus:ring-0;
+    @apply border border-gray rounded-lg caret-darkPurple focus:ring-0;
   }
   textarea {
     @apply resize-none;
@@ -62,6 +63,21 @@ Custom classes
   }
 }
 
+/*
+Main layout
+*/
+
+main {
+  display: grid;
+  grid-template-columns: 1fr repeat(12, 64px) 1fr;
+  min-height: 100vh;
+}
+
+.errorlist > li {
+  color: #ff3939;
+  font-size: 0.8rem;
+}
+
 /* Insert icons into form elements */
 .form-input {
   position: relative;
@@ -93,8 +109,10 @@ Custom classes
 /* Blurred focus border on form elements */
 input[type="text"]:focus,
 input[type="text"]:hover,
+input[type="password"]:hover,
 input[type="email"]:focus,
-input[type="email"]:hover {
+input[type="email"]:hover,
+input[type="password"]:hover {
   box-shadow: rgba(190, 173, 255, 0.25) 0px 54px 55px,
     rgba(190, 173, 255, 0.12) 0px -12px 30px,
     rgba(190, 173, 255, 0.12) 0px 4px 6px,

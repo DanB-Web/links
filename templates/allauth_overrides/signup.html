@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% load allauth account %}
+{% block content %}
+  <section class="col-start-2 col-span-12 flex flex-col justify-center">
+    <div class="flex justify-center mb-12">{% include "icons/logoDevlinksLarge.svg" %}</div>
+    <div class="mx-auto w-[476px] p-8 bg-white rounded-xl">
+      <h1 class="heading-m">Create an account</h1>
+      <p class="heading-s text-darkGray mb-6">Lets get you started sharing your links!</p>
+      <form method="post" action="{{ account_signup }}">
+        {% csrf_token %}
+        <div class="flex flex-col mb-6">
+          {{ form.signup.errors | safe }}
+          <label for="id_email">Email:</label>
+          <input type="email"
+                 name="email"
+                 placeholder="Enter your email"
+                 maxlength="320"
+                 required
+                 id="id_email">
+          {% if form.email.errors %}{{ form.email.errors | safe }}{% endif %}
+        </div>
+        <div class="flex flex-col mb-6">
+          <label for="id_password1">Password:</label>
+          <input type="password"
+                 name="password1"
+                 placeholder="Enter a password"
+                 required
+                 id="id_password1">
+          {% if form.password1.errors %}{{ form.password1.errors | safe }}{% endif %}
+        </div>
+        <div class="flex flex-col mb-6">
+          <label for="id_password2">Password (again):</label>
+          <input type="password"
+                 name="password2"
+                 placeholder="Enter the password again"
+                 required
+                 id="id_password2">
+          {% if form.password2.errors %}{{ form.password1.errors | safe }}{% endif %}
+        </div>
+        {% if redirect_field_value %}
+          <input type="hidden"
+                 name="{{ redirect_field_name }}"
+                 value="{{ redirect_field_value }}" />
+        {% endif %}
+        <button class="btn-primary w-full" type="submit">Sign Up</button>
+        <p class="mt-4 text-center">
+          Already have an account?
+          <a class="text-darkPurple" href="{{ login_url }}">Login</a>
+        </p>
+      </form>
+    </div>
+  </section>
+{% endblock content %}

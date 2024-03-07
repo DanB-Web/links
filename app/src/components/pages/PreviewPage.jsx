@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 
 const PreviewPage = () => {
   return (
-    <main>
-      PreviewPage<Link to={"/app"}>Dashboard</Link>
-    </main>
+    <>
+      <h1>PreviewPage</h1>
+      <Link to={"/app"}>Dashboard</Link>
+    </>
   );
 };
 
